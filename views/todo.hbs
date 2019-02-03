@@ -1,0 +1,108 @@
+<style>
+    .divelse, #todo, #odjavise {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 86px;
+    }
+
+    #todo {
+        max-width: 460px;
+        min-height: 260px;
+        padding: 0.6%;
+        background-color: #4CAF50;
+
+    }
+
+    .porukaelse, a, h2, p, ul, li {
+        font-family: 'Athiti', sans-serif !important;
+        text-align: center;
+        line-height: 80%;
+    }
+
+    p {
+        font-size: 110%;
+    }
+
+    p:hover {
+        text-decoration:line-through;
+    }
+
+    a {
+        text-decoration: none;
+        color: black;
+    }
+
+    #newtask {
+        max-width: 460px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 16px;
+        background-color: #3b84ff;
+        padding: 0.3%;
+    }
+
+    input {
+        width: 451px !important;
+        max-width: 460px !important;
+    }
+
+    #odjavise {
+        max-width: 460px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 16px;
+        background-color: crimson;
+        padding: 0.3%;
+        font-family: 'Athiti', sans-serif;
+        text-align: center;
+        margin-bottom: 36px;
+    }
+
+    .lista {
+        background:none!important;
+        color:inherit;
+        border:none;
+        padding:3px !important;
+        font: inherit;
+        cursor: pointer;
+        font-family: 'Athiti', sans-serif;
+        font-size: 19px;
+    }
+
+    .lista:hover {
+        text-decoration:line-through;
+    }
+
+</style>
+
+{{#if verifikator }}
+    <div id="todo">
+
+        <h2>To Do za korisnika: {{ korisnickoime }}</h2>
+        <hr>
+            <form action="/brisanjetaska" method="post">
+                <input type="hidden" name="usern" value="{{ korisnickoime }}">
+                {{#each nekiniz}}
+                    <button class="lista" name="taskovi" value="{{ task }}"> {{ task }} </button>
+                {{/each}}
+            </form>
+    </div>
+    <div id="newtask">
+        <form action="/novitask" method="post">
+            <input type="hidden" name="usern" value="{{ korisnickoime }}">
+            <textarea rows="3" cols="60" name="tekst" placeholder="Unesite novi task"></textarea>
+            <button name="unesi" id="unesi">Unesi</button>
+        </form>
+    </div>
+    <div id="odjavise">
+        <button name="odj" id="odj" onclick="window.location='/'; ">Odjavi se</button>
+    </div>
+{{else}}
+    <div class="divelse" >
+        <h1 class="porukaelse">Morate biti ulogovani da biste pristupili ovom delu sajta!</h1>
+        <h2 class="porukaelse"><a class="porukaelse" style="color: #3b84ff;" href="/">Početna strana</a></h2>
+    </div>
+{{/if}}

@@ -1,0 +1,69 @@
+<script>
+
+    function napraviFormu(i)
+    {
+        var forma;
+
+        if(i == 0)
+        {
+            forma = "<div id='obazidiv'>";
+
+            forma += "<ul>";
+
+            forma += "<li>Baza je napravljena pomoću SQLite3 database engine-a.</li>";
+            forma += "<li>Baza se nalazi u fajlu <strong>baza.db</strong></li>";
+            forma += "<br>";
+            forma += "<li><strong>Tabele u bazi:</strong></li>";
+            forma += "<li><strong>korisnici</strong>(id, ime, prezime, usr, pwd)</li>";
+                forma += "<ul><li>PK(id)</li></ul>";
+            forma += "<li><strong>todolist</strong>(idliste, idkorisnika, task)</li>";
+                forma += "<ul><li>PK(idliste)</li><li>FK(idKorisnika)</li></ul>";
+
+            forma += "</ul>";
+
+            forma += "</div>";
+        }
+        else
+        {
+
+            if(i == 1)
+            {
+                forma = "<br><form action='/prijavi' method='post'>";
+                forma += "<input type='text' placeholder='Unesite korisnicko ime' id='korisnickoIme' name='korisnickoime'>";
+                forma += "<input type='password' placeholder='Unesite lozinku' id='lozinka' name='lozinka'>";
+            }
+            else if(i)
+            {
+                forma = "<br><form action='/registruj' method='post'>";
+                forma += "<input type='text' placeholder='Unesite ime' id='ime' name='ime'>";
+                forma += "<input type='text' placeholder='Unesite prezime' id='prezime' name='prezime'>";
+                forma += "<input type='email' placeholder='Unesite email' id='email' name='email'>";
+                forma += "<input type='text' placeholder='Unesite korisnicko ime' id='korisnickoIme' name='korisnickoime'>";
+                forma += "<input type='password' placeholder='Unesite lozinku' id='lozinka' name='lozinka'>";
+                forma += "<input type='password' placeholder='Ponovite lozinku' id='lozinkao5' name='lozinkao5'>";
+            }
+
+            forma += "<button id='sbm'>Pošalji</button>";
+            forma += "</form>";
+        }
+
+
+
+
+        document.getElementById('forma').innerHTML = forma;
+    }
+</script>
+
+<h1>{{title}}</h1>
+<div id="preg">
+    <h2>Dobrodošli, ovo je seminarski rad iz predmeta Web programiranje.</h2>
+    <h3>Izaberite jednu od sledećih opcija:</h3>
+    <div id="dugmici">
+        <a href="#" onclick="napraviFormu(1);">Prijava</a> |
+        <a href="#" onclick="napraviFormu(2);">Registracija</a> |
+        <a href="#" onclick="napraviFormu(0);">O bazi</a>
+    </div>
+    <div id="forma">
+
+    </div>
+</div>
