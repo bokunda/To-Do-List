@@ -9,7 +9,7 @@ In your favourite web browser type http://localhost:8000/
 
 ## Screenshots:
 
-[![Screen Shot](https://i.imgur.com/m2WilC3.png)](#)<br>
+[![Screen Shot](https://i.imgur.com/xnT445R.png)](#)<br>
 'Login screen' (only front end validation)<br><br>
 
 [![Screen Shot](https://i.imgur.com/J76K7kB.png)](#)<br>
